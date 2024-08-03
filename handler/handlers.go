@@ -23,8 +23,8 @@ func CreateShortUrl(c *gin.Context) {
 	store.SaveUrlMapping(shortUrl, input.LongUrl, input.UserId)
 	host := "http://localhost:8082/"
 	c.JSON(http.StatusOK, gin.H{
-		"message":   "short url created sucessfully",
-		"short_url": host + shortUrl,
+		"message":  "short url created sucessfully",
+		"shortURL": host + shortUrl,
 	})
 }
 

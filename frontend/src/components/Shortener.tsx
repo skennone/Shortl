@@ -1,20 +1,30 @@
 import { Button } from "./ui/button";
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { useMutation, useMutationState } from "@tanstack/react-query";
 import { createShortURL } from "./fetchShortURL";
 
 const Shortener = () => {
   const [longURL, setLongUrl] = useState("");
   const [userID, setUserID] = useState("");
+  const mutationKey = ["shortURL"];
 
-  const mutation  = useMutation({
-    mutationFn: ({ longURL, userID }: { longURL: string, userID: string }) => createShortURL(longURL, userID)
-})
+  const mutation = useMutation({
+    mutationKey,
+    mutationFn: ({ longURL, userID }: { longURL: string; userID: string }) =>
+      createShortURL(longURL, userID),
+  });
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    mutation.mutate({longURL:longURL,userID:userID});
+    mutation.mutate({ longURL: longURL, userID: userID });
   }
- 
+
+  const data = useMutationState({
+    // this mutation key needs to match the mutation key of the given mutation (see above)
+    filters: { mutationKey },
+    select: (mutation) => mutation.state.data,
+  });
+
+  const shortURL = data[data.length - 1];
   return (
     <div className="flex items-center justify-center min-w-full min-h-screen">
       <form className="flex flex-col md:w-1/5" onSubmit={handleSubmit}>
@@ -41,6 +51,9 @@ const Shortener = () => {
         >
           Shorten URL
         </Button>
+        <div className="p-3 mt-2 flex justify-between items-center">
+          {mutation.isSuccess ? <div>Short URL:{shortURL}</div> : null}
+        </div>
       </form>
     </div>
   );
