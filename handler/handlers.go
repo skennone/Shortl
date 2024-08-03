@@ -9,8 +9,8 @@ import (
 )
 
 type UrlCreationRequest struct {
-	LongUrl string `json:"long_url"`
-	UserId  string `json:"user_id"`
+	LongUrl string `json:"longURL"`
+	UserId  string `json:"userID"`
 }
 
 func CreateShortUrl(c *gin.Context) {
