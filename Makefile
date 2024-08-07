@@ -12,7 +12,6 @@ redis:
 ## run/server: run server
 .PHONY: run/server
 run/server:
-	@echo ''
 	go run main.go
 
 ## run/client: run client
