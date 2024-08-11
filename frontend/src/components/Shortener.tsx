@@ -7,6 +7,7 @@ const Shortener = () => {
   const [longURL, setLongUrl] = useState("");
   const [userID, setUserID] = useState("");
   const mutationKey = ["shortURL"];
+  const [copied, setCopied] = useState(false);
 
   const mutation = useMutation({
     mutationKey,
@@ -23,6 +24,26 @@ const Shortener = () => {
     filters: { mutationKey },
     select: (mutation) => mutation.state.data,
   });
+
+  const copyTextToClipboard = async (text: string) => {
+    if ("clipboard" in navigator) {
+      return await navigator.clipboard.writeText(text);
+    } else {
+      return navigator.execCommand("copy", true, text);
+    }
+  };
+  const handleClick = (text: string) => {
+    copyTextToClipboard(text)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const shortURL = data[data.length - 1];
   return (
@@ -51,8 +72,20 @@ const Shortener = () => {
         >
           Shorten URL
         </Button>
-        <div className="p-3 mt-2 flex justify-between items-center">
-          {mutation.isSuccess ? <div>Short URL:{shortURL}</div> : null}
+        <div className="mt-2 flex items-center">
+          {mutation.isSuccess ? (
+            <div className="flex items-end">
+              <input
+                className="p-3 mt-4 rounded-md border-2 border-grey focus:outline-none focus:border-blue-300"
+                type="text"
+                value={shortURL}
+                readOnly
+              />
+              <Button className="m-2 p-5" onClick={() => handleClick(shortURL)}>
+                <span>{copied ? "Copied!" : "Copy"}</span>
+              </Button>
+            </div>
+          ) : null}
         </div>
       </form>
     </div>
