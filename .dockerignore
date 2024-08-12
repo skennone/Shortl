@@ -1,0 +1,4 @@
+./client/node_modules
+.dockerignore
+./server/api.Dockerfile
+./client/client.Dockerfile

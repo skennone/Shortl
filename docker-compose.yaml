@@ -1,0 +1,38 @@
+services:
+  redis:
+    image: redis:7.2.5-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_vol:/var/lib/redis/content
+
+  api:
+    build:
+      context: ./server
+      dockerfile: api.Dockerfile
+    ports:
+      - 8082:8082
+    networks:
+      - shortl
+
+  client:
+    build:
+      context: ./client
+      dockerfile: client.Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    command: ["npm", "run", "dev"]
+    networks:
+      - shortl
+
+networks:
+  shortl:
+    driver: bridge
+
+volumes:
+  redis_vol:
+    driver: local
