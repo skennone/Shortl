@@ -26,3 +26,11 @@ remove/redis:
 	docker stop short-url-redis
 	docker rm short-url-redis
 	docker volume rm redis-vol
+
+.PHONY: run
+run:
+	docker compose up --build --no-recreate -d client api redis
+
+.PHONY: down
+down:
+	docker compose down

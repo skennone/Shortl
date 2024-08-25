@@ -6,13 +6,13 @@ To run the project locally, clone the repo
 
 Run the following commands from the provided `Makefile` to run the project
 
-`make redis`
+`make run`
 
-`make run/server`
+alternatively use `docker compose` directly
 
-`make run/client`
+`docker compose up --build --no-recreate -d client api redis`
 
-Open your browser at `http://localhost:5173` and use the web app to generate short url's.
+Open your browser at `http://localhost:4242` and use the web app to generate short url's.
 
 To generate a short URL, enter any url in the first input field and in the second input field
 enter a userID and click `Shorten URL`
@@ -24,4 +24,4 @@ When you visit the short URL you'll be redirected to the original URL you shorte
 - [ ] add DB for cold values/least frequently fetched data
 - [ ] add /register & /login endpoints
 - [ ] userID should be generated from /register
-- [ ] dockerize application
+- [x] dockerize application
