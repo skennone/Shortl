@@ -28,8 +28,6 @@ const Shortener = () => {
   const copyTextToClipboard = async (text: string) => {
     if ("clipboard" in navigator) {
       return await navigator.clipboard.writeText(text);
-    } else {
-      return navigator.execCommand("copy", true, text);
     }
   };
   const handleClick = (text: string) => {
@@ -45,7 +43,7 @@ const Shortener = () => {
       });
   };
 
-  const shortURL = data[data.length - 1];
+  const shortURL = data[data.length - 1] as string;
   return (
     <div className="flex items-center justify-center min-w-full min-h-screen">
       <form className="flex flex-col md:w-1/5" onSubmit={handleSubmit}>
