@@ -21,14 +21,13 @@ const CacheDuration = 6 * time.Hour
 
 func Init() *StorageService {
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     "redis:6379",
+		Addr:     "localhost:6379", //redis:6379?
 		Password: "",
 		DB:       0,
 	})
 	pong, err := redisClient.Ping(ctx).Result()
 	if err != nil {
 		fmt.Printf("Error init Redis: %v", err)
-
 	}
 	fmt.Printf("\nRedis started sucessfully: pong message = {%s}", pong)
 	storeService.redisClient = redisClient
