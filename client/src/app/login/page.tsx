@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowLeft, Link2 } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function LoginPage() {
   return (
@@ -23,6 +24,12 @@ export default function LoginPage() {
           <Link href="/register">
             <Button>Register</Button>
           </Link>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Link href="/register">
+              <Button>Register</Button>
+            </Link>
+          </div>
         </div>
       </header>
 
