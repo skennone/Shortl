@@ -1,14 +1,16 @@
+"use server";
+
 export async function createShortURL(
   longURL: string,
-  userID: string,
-): Promise<void> {
+  userID = "guest", // Default userID for non-authenticated users
+): Promise<string | null> {
   try {
     const response = await fetch("http://127.0.0.1:8082/create-short-url", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ longURL, userID }), // body data type must match "Content-Type" header
+      body: JSON.stringify({ longURL, userID }),
     });
 
     if (!response.ok) {
@@ -19,5 +21,6 @@ export async function createShortURL(
     return result.shortURL;
   } catch (error) {
     console.error("Error:", error);
+    return null;
   }
 }
