@@ -21,6 +21,7 @@ When you visit the short URL you'll be redirected to the original URL you shorte
 
 ## TODO:
 
+- [x] improve UI
 - [ ] add DB for cold values/least frequently fetched data
 - [ ] add /register & /login endpoints
 - [ ] userID should be generated from /register
