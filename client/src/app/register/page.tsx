@@ -21,9 +21,6 @@ export default function RegisterPage() {
             <Link2 className="h-6 w-6" />
             <span className="text-xl font-bold">Shortl</span>
           </Link>
-          <Link href="/login">
-            <Button variant="ghost">Login</Button>
-          </Link>
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Link href="/login">

@@ -117,26 +117,24 @@ export default function Home() {
             </form>
 
             {shortenedUrl && (
-              <Alert className="mt-4 border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/50">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
-                    <AlertDescription className="font-medium text-green-800 dark:text-green-300">
-                      URL shortened successfully!
-                    </AlertDescription>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium">{shortenedUrl}</span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => copyToClipboard(shortenedUrl)}
-                      className="h-8 border-green-200 dark:border-green-800"
-                    >
-                      <Copy className="mr-2 h-4 w-4" />
-                      Copy
-                    </Button>
-                  </div>
+              <Alert className="mt-4 border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/50 flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                  <AlertDescription className="font-medium text-green-800 dark:text-green-300">
+                    URL shortened successfully!
+                  </AlertDescription>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="font-medium">{shortenedUrl}</span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => copyToClipboard(shortenedUrl)}
+                    className="h-8 border-green-200 dark:border-green-800"
+                  >
+                    <Copy className="mr-2 h-4 w-4" />
+                    Copy
+                  </Button>
                 </div>
               </Alert>
             )}
