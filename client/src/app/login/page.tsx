@@ -16,7 +16,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b w-full sticky top-0 bg-background z-10">
-        <div className="container max-w-screen-xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-7-xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <Link2 className="h-6 w-6" />
             <span className="text-xl font-bold">Shortl</span>
