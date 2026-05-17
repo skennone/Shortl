@@ -33,7 +33,7 @@ export default function Home() {
     },
   ]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     if (!url) return;
 
@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="border-b w-full sticky top-0 bg-background z-10">
-        <div className="container max-w-screen-xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <Link2 className="h-6 w-6" />
             <span className="text-xl font-bold">Shortl</span>
@@ -83,12 +83,12 @@ export default function Home() {
         </div>
       </header>
       <main className="flex-1 flex flex-col items-center w-full overflow-y-auto">
-        <section className="container max-w-screen-xl w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
-          <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+        <section className="container `max-w-232 w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
+          <div className="mx-auto flex max-w-232 flex-col items-center justify-center gap-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Shorten your links in seconds
             </h1>
-            <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-lg md:text-xl">
+            <p className="max-w-2xl leading-normal text-muted-foreground sm:text-lg md:text-xl">
               Create short, memorable links that redirect to your long URLs.
             </p>
           </div>
@@ -190,24 +190,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t py-4 w-full bg-background">
-        <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Shortl. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <Link href="/terms" className="underline underline-offset-4">
-              Terms
-            </Link>
-            <Link href="/privacy" className="underline underline-offset-4">
-              Privacy
-            </Link>
-            <Link href="/contact" className="underline underline-offset-4">
-              Contact
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
